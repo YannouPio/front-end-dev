@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-.score {
+#score1, #score2 {
     background: #0a0001;
     font-size: 90px;
     color: #F94F6D;
