@@ -1,44 +1,45 @@
-let cards = [];
-let hasBlackJack = false;
-let isAlive = true;
-let message = "";
-let messageEl = document.getElementById("message-el");
-let sumEl = document.getElementById("sum-el");
-let cardsEl = document.getElementById("cards-el");
+let firstCard = 10
+let secondCard = 4
+let cards = [firstCard, secondCard]
+let sum = firstCard + secondCard
+let hasBlackJack = false
+let isAlive = true
+let message = ""
+let messageEl = document.getElementById("message-el")
+let sumEl = document.getElementById("sum-el")
+let cardsEl = document.getElementById("cards-el")
 
-function getRandomCard() {
-    return Math.floor(Math.random() * 11) + 1; // 生成 1 到 11 的随机数
-}
+// Create a function, getRandomCard(), that always returns the number 5
+
 
 function startGame() {
-    cards = [getRandomCard(), getRandomCard()]; // 随机生成初始两张卡
-    renderGame();
-}
-
-function calculateSum() {
-    return cards.reduce((total, card) => total + card, 0);
+    renderGame()
 }
 
 function renderGame() {
-    let sum = calculateSum();
-    cardsEl.textContent = `Cards: ${cards.join(' ')}`;
-    sumEl.textContent = `Sum: ${sum}`;
-
-    if (sum < 21) {
-        message = "Do you want to draw a new card?";
-    } else if (sum === 21) {
-        message = "You've got Blackjack!";
-        hasBlackJack = true;
-    } else {
-        message = "You're out of the game!";
-        isAlive = false;
+    cardsEl.textContent = "Cards: "
+    for (let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
     }
-    messageEl.textContent = message;
+
+    sumEl.textContent = "Sum: " + sum
+    if (sum <= 20) {
+        message = "Do you want to draw a new card?"
+    } else if (sum === 21) {
+        message = "You've got Blackjack!"
+        hasBlackJack = true
+    } else {
+        message = "You're out of the game!"
+        isAlive = false
+    }
+    messageEl.textContent = message
 }
 
+
 function newCard() {
-    let card = getRandomCard();
-    cards.push(card);
-    console.log(cards);
-    renderGame();
+    let card = 6
+    sum += card
+    cards.push(card)
+    console.log(cards)
+    renderGame()
 }
